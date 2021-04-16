@@ -12,7 +12,7 @@ public class Runner {
 		sb.append("\t\tmakespan").append("\t\t").append("budget\t\t").append("realduration\t").append("\n");
 //		String[] files = new String[]{"RemoteSense_13","RemoteSense_23","RemoteSense_53","RemoteSense_83","RemoteSense_103","RemoteSense_143"};
 //		String[] files = new String[] {"RemoteSense_103"};
-		String[] files = new String[] {"RemoteSense_13_1"};
+		String[] files = new String[] {"RemoteSense_13_1","RemoteSense_13_2","RemoteSense_13_2"};
 		for (String file : files) {
 			runworkflow(file);			
 		}
