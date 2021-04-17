@@ -1,7 +1,6 @@
 package workflowtest;
 
 
-import org.griphyn.vdl.dax.Filename;
 
 import it.cnr.isti.smartfed.test.TestResult;
 import workflowmapping.GeneticAllocator;
@@ -31,7 +30,7 @@ public class Runworkflow {
 		
 		System.out.println("makespan:"+makespan);
 		System.out.println("cost:"+cost);
-		System.out.println("realduration:"+cost);
+		System.out.println("realduration:"+realduration);
 		
 //		sb.append(filename).append("\t");
 //		sb.append(makespan).append("\t").append(cost).append("\t").append(realduration).append("\t\n");

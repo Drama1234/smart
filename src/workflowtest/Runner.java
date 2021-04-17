@@ -9,13 +9,13 @@ public class Runner {
 	private static StringBuilder sb = new StringBuilder();
 	
 	public static void main(String[] args) {
-		String[] files = new String[] {"RemoteSense_13_1","RemoteSense_13_2","RemoteSense_13_3"};
+//		String[] files = new String[] {"RemoteSense_13_1","RemoteSense_13_2","RemoteSense_13_3"};
 //		Runworkflow runworkflow1 = new Runworkflow("RemoteSense_13_1");
 //		Runworkflow runworkflow2 = new Runworkflow("RemoteSense_13_2");
 //		Runworkflow runworkflow3 = new Runworkflow("RemoteSense_13_3");
 		
 		Thread t1 = new Thread(new RunworkflowThread("RemoteSense_13_1"));
-//		Thread t2 = new Thread(new RunworkflowThread("RemoteSense_13_3"));
+//		Thread t2 = new Thread(new RunworkflowThread("RemoteSense_13_2"));
 //		Thread t3 = new Thread(new RunworkflowThread("RemoteSense_13_3"));
 		t1.start();
 //		t2.start();
@@ -29,6 +29,8 @@ public class Runner {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+}
 		
 		
 //		sb.append("\t\tmakespan").append("\t\t").append("budget\t\t").append("realduration\t").append("\n");
@@ -39,29 +41,29 @@ public class Runner {
 //			runworkflow(file);			
 //		}
 //		System.out.println(sb);
-	}
+//	}
 	
 	
 	
-	private static void runworkflow(String filename) {
-		WorkflowDataset dataset = new WorkflowDataset(20, filename);
-		
-		TestResult.reset();
-		GeneticAllocator allocator = new GeneticAllocator();
-		System.out.println("基于时间和成本的遗传算法");
-//		allocator.setPolicyType();//全局网络		
-		for(int i= 0;i<10;i++) {
-			allocator.setRandomSeed(i*7);
-			Experiment experiment = new Experiment(allocator, dataset, i*7);
-			experiment.run();
-		}
-		
-		double makespan = TestResult.getCompletion().getMean();
-		double cost = TestResult.getCost().getMean();
-		double realduration = TestResult.getRealDuration().getMean();
-		
-		sb.append(filename).append("\t");
-		sb.append(makespan).append("\t").append(cost).append("\t").append(realduration).append("\t\n");
+//	private static void runworkflow(String filename) {
+//		WorkflowDataset dataset = new WorkflowDataset(20, filename);
+//		
+//		TestResult.reset();
+//		GeneticAllocator allocator = new GeneticAllocator();
+//		System.out.println("基于时间和成本的遗传算法");
+////		allocator.setPolicyType();//全局网络		
+//		for(int i= 0;i<10;i++) {
+//			allocator.setRandomSeed(i*7);
+//			Experiment experiment = new Experiment(allocator, dataset, i*7);
+//			experiment.run();
+//		}
+//		
+//		double makespan = TestResult.getCompletion().getMean();
+//		double cost = TestResult.getCost().getMean();
+//		double realduration = TestResult.getRealDuration().getMean();
+//		
+//		sb.append(filename).append("\t");
+//		sb.append(makespan).append("\t").append(cost).append("\t").append(realduration).append("\t\n");
 		
 //		TestResult.reset();
 //		GeneticAllocator1 allocator1 = new GeneticAllocator1();
@@ -96,6 +98,6 @@ public class Runner {
 //		
 //		sb.append(filename).append("\t");
 //		sb.append(rr_makespan).append("\t").append(rr_cost).append("\t").append(rr_realduration).append("\t\n");
-	}
-}
+//	}
+//}
 
