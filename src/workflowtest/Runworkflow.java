@@ -31,6 +31,7 @@ public class Runworkflow {
 		System.out.println("makespan:"+makespan);
 		System.out.println("cost:"+cost);
 		System.out.println("realduration:"+realduration);
+		System.out.println();
 		
 //		sb.append(filename).append("\t");
 //		sb.append(makespan).append("\t").append(cost).append("\t").append(realduration).append("\t\n");
