@@ -30,8 +30,8 @@ public class DatacenterGenerator extends AbstractGenerator{
 	protected Range costPerMem;
 	protected Range costPerSto;
 	protected Range costPerCpu;
-	protected Range costPerBw;
-	protected Range Bw;
+//	protected Range costPerBw;
+//	protected Range Bw;
 	
 	// host variables
 	protected Range ramAmount;

@@ -15,15 +15,15 @@ public class Runner {
 //		Runworkflow runworkflow3 = new Runworkflow("RemoteSense_13_3");
 		
 		Thread t1 = new Thread(new RunworkflowThread("RemoteSense_13_1"));
-//		Thread t2 = new Thread(new RunworkflowThread("RemoteSense_13_2"));
+		Thread t2 = new Thread(new RunworkflowThread("RemoteSense_13_2"));
 //		Thread t3 = new Thread(new RunworkflowThread("RemoteSense_13_3"));
 		t1.start();
-//		t2.start();
+		t2.start();
 //		t3.start();
 		
 		try {
 			t1.join();
-//			t2.join();
+			t2.join();
 //			t3.join();
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block

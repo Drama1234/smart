@@ -46,8 +46,9 @@ public class Experiment {
 		this.randomSeed = seed;
 	}
 	
-	public void run() 
+	public synchronized void run() 
 	{
+		
 		// init the cloudsim simulator
 		Log.enable();
 		int num_user = 1;   // users
