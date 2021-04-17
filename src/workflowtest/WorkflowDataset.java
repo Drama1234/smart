@@ -41,10 +41,18 @@ public class WorkflowDataset implements InterfaceDataSet{
 		apps.add(new WorkflowGenerator(filename, userId, datacenters));
 		return apps;
 	}
+	
 
 	@Override
 	public InternetEstimator createInternetEstimator(List<FederationDatacenter> datacenters) {
 		InternetEstimator inetEst = new InternetEstimator(datacenters, seed);
 		return inetEst;
+	}
+
+	@Override
+	public List<List<Application>> createMultiworkflow(int userId, List<FederationDatacenter> datacenters) {
+		List<List<Application>> multiworkflow = new ArrayList<List<Application>>();
+		multiworkflow.get(0).add(new WorkflowGenerator(filename, userId, datacenters));
+		return null;
 	}
 }

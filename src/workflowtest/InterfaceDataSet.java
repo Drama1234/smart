@@ -12,5 +12,7 @@ public interface InterfaceDataSet {
 	public List<Application> createApplications(int userId,List<FederationDatacenter> datacenters);
 
 	public InternetEstimator createInternetEstimator(List<FederationDatacenter> datacenters);
+	
+	public List<List<Application>> createMultiworkflow(int userId,List<FederationDatacenter> datacenters);
 
 }

@@ -99,7 +99,8 @@ public class DatacenterGenerator extends AbstractGenerator{
 			long numCore, mips, ram, bw, sto;
 			double costCpu, costSto, costMem;
 			
-			double value = distribution.sample();
+//			double value = distribution.sample();
+			double value = 0.5;
 			numCore = (long) coreAmount.denormalize(value);
 			mips = (long) mipsAmount.denormalize(value);
 			ram = (long) ramAmount.denormalize(value);
