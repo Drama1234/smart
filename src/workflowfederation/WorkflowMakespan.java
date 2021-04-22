@@ -20,7 +20,7 @@ public class WorkflowMakespan {
 	
 	public static double getWorkflowTime(List<FederationDatacenter> dcs,InternetEstimator internet,Allocation allocation) {
 		WorkflowGenerator workflow = (WorkflowGenerator)allocation.getApplication();
-		
+//		System.out.println("应用信息："+workflow.toString());
 		Map<ApplicationEdge, Double> edgeTimeMap = new HashMap<ApplicationEdge, Double>();
 		double total_time = 0;
 		int depth = 1;
@@ -143,6 +143,10 @@ public class WorkflowMakespan {
 			for (Task task: tasks)
 			{
 //				System.out.println("输出任务ID："+t.getCloudletId());
+//				System.out.println("输出任务ID："+task.getCloudletId());
+//				System.out.println("应用信息："+workflow.toString());
+//				System.out.println("数据中心信息："+workflow.getVertexForCloudlet(task).getfeFederationDatacenters().get(0).toStringDetail());
+	//			System.out.println("数据中心大小："+workflow.getVertexForCloudlet(task).getfeFederationDatacenters().get(0).getDatacenterBw());
 				List<File> files = task.getFileList();
 				double outputSize = 0;
 				for (File file : files) {
@@ -162,9 +166,14 @@ public class WorkflowMakespan {
 		int depth = 1;
 		double input_time = 0;
 		List<Task> tasks = workflow.getTasksWithDepth(depth);
+//		System.out.println("输入任务大小："+tasks.size());
 		if(tasks.size() != 0) {
 			for (Task task : tasks) {
+//				System.out.println("应用信息："+workflow.toString());
+//				System.out.println("顶点id:"+workflow.getVertexForCloudlet(task).getId());
+//				System.out.println("数据中心信息："+workflow.getVertexForCloudlet(task).getfeFederationDatacenters().get(0).toStringDetail());
 //				System.out.println("输入任务ID："+task.getCloudletId());
+//				System.out.println("数据中心大小："+workflow.getVertexForCloudlet(task).getfeFederationDatacenters().get(0).getDatacenterBw());
 				@SuppressWarnings("unchecked")
 				List<File> files = task.getFileList();
 				double inputSize = 0;
@@ -175,21 +184,26 @@ public class WorkflowMakespan {
 						inputSize += file.getSize();
 					}
 				}
-				input_time = inputTime(inputSize, task, workflow);
+				input_time += inputTime(inputSize, task, workflow);
 			}
 		}
 		return input_time;
 	}
 	
-	private static double inputTime(double inputSize,Task t,WorkflowGenerator workflow) {
-
+	private static double inputTime(double inputSize,Task task,WorkflowGenerator workflow) {
+//		System.out.println("顶点id:"+workflow.getVertexForCloudlet(task).getId());
+//		System.out.println("输入任务ID："+task.getCloudletId());
+//		System.out.println("输入任务ID："+task.getCloudletId());
+//		System.out.println("数据中心大小："+workflow.getVertexForCloudlet(task).getfeFederationDatacenters().get(0).getDatacenterBw());
+		
 //		System.out.println("id："+t.getCloudletId());
 //		System.out.println("数据中心大小："+workflow.getVertexForCloudlet(t).getfeFederationDatacenters().get(0).getDatacenterBw());
-		double bw = workflow.getVertexForCloudlet(t).getfeFederationDatacenters().get(0).getDatacenterBw();
+//		System.out.println("应用信息："+workflow.toString());
+		double bw = workflow.getVertexForCloudlet(task).getfeFederationDatacenters().get(0).getDatacenterBw();
 //		System.out.println("数据中心带宽："+Double.valueOf(String.format("%.2f", bw/1024/1024))+"MB/s");
-		System.out.println("任务ID："+t.getCloudletId()+" 数据中心ID："+workflow.getVertexForCloudlet(t).getfeFederationDatacenters().get(0));
+//		System.out.println("任务ID："+t.getCloudletId()+" 数据中心ID："+workflow.getVertexForCloudlet(t).getfeFederationDatacenters().get(0));
 		double input_time = inputSize / bw;
-		
+//		double input_time = 0;
 		return input_time;
 	}
 	

@@ -21,6 +21,7 @@ public class WorkflowCost {
 		double vm_time = 0;
 		double network_amount = 0;
 		WorkflowGenerator workflow = (WorkflowGenerator)allocation.getApplication();
+//		System.out.println("应用信息："+workflow.toString());
 		
 		for(ApplicationVertex av: allocation.getApplication().vertexSet()) {
 			Vm vm = allocation.getApplication().getVmForVertex(av);
@@ -82,7 +83,7 @@ public class WorkflowCost {
 				}
 			}
 		}
-		System.out.println("网络成本为："+Double.valueOf(String.format("%.2f", cost)));
+//		System.out.println("网络成本为："+Double.valueOf(String.format("%.2f", cost)));
 		return cost;
 	}
 	

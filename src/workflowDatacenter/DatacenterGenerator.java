@@ -99,8 +99,8 @@ public class DatacenterGenerator extends AbstractGenerator{
 			long numCore, mips, ram, bw, sto;
 			double costCpu, costSto, costMem;
 			
-			double value = distribution.sample();
-//			double value = 0.5;
+//			double value = distribution.sample();
+			double value = 0.5;
 			numCore = (long) coreAmount.denormalize(value);
 			mips = (long) mipsAmount.denormalize(value);
 			ram = (long) ramAmount.denormalize(value);
@@ -173,7 +173,7 @@ public class DatacenterGenerator extends AbstractGenerator{
 //			System.out.println("CPU成本："+profile.get(DatacenterParams.COST_PER_CPU)+"GB/h");
 //			System.out.println("内存成本："+profile.get(DatacenterParams.COST_PER_MEM)+"GB/h");
 //			System.out.println("虚拟机最大带宽："+profile.get(DatacenterParams.MAX_BW_FOR_VM)+"MB/s");
-			System.out.println(list.get(i).toStringDetail());
+//			System.out.println(list.get(i).toStringDetail());
 		}
 		return list;
 	}

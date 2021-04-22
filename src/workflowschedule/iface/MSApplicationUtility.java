@@ -97,6 +97,7 @@ public class MSApplicationUtility {
 		
 //		nodeCharacteristic.put(Constant.CITY,city);
 //		appNode.setProviderId(datacenter.getId());
+//		appNode.setProviderId(providerID);
 		appNode.setCharacteristic(nodeCharacteristic);
 		appNode.setID(vm.getId());
 		return appNode;

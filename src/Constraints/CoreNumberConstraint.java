@@ -30,7 +30,7 @@ public class CoreNumberConstraint extends Policy{
 		long provCPU = (Integer) prov.getComputing().getCharacteristic().get(Constant.CPU_NUMBER); //what I have
 		
 		double distance = super.calculateDistance_ErrHandling(provCPU, nodeCPU, highCoreNumberValue);
-		
+		if (DEBUG)
 		System.out.println("基因内核值："+distance * getWeight());
 		
 		return distance * getWeight();

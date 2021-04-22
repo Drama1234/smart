@@ -28,7 +28,8 @@ public class providerIDConstraint extends Policy{
 		double distance = 0;
 		if (DEBUG)
 			System.out.println("Eval before applying weights for " + "NodeID " + node.getID() + " - ProvID " + prov.getID());
-//		System.out.println("云服务供应商Id:"+nodeProviderId);
+		if (DEBUG)
+		System.out.println("云服务供应商Id:"+nodeProviderId);
 		if(nodeProviderId.equals("-1")) {
 			distance = 0;
 		}else if(nodeProviderId == provProviderId) {

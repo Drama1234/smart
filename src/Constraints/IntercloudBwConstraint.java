@@ -71,6 +71,7 @@ public class IntercloudBwConstraint extends Policy{
 			//个数越多，差异越大，值越小
 			distance = sumofdifference / numofdifference;
 		}
+		if(DEBUG)
 		System.out.println("跨云带宽约束："+distance);
 		return distance * getWeight();
 	}

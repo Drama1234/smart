@@ -61,6 +61,7 @@ public class Experiment {
 		
 		//创建Federation
 		Federation federation = new Federation(allocator,randomSeed);
+//		Federation federation = new Federation(randomSeed);
 		CloudSim.addEntity(federation);
 				
 		// 重新设置资源统计
@@ -100,35 +101,59 @@ public class Experiment {
 		// print the cloudlet
 		List<Cloudlet> newList = federation.getReceivedCloudlet();
 		System.out.println("任务大小："+newList.size());
-		UtilityPrint.printCloudletList(newList); 		
-		
+		UtilityPrint.printCloudletList(newList); 
 		int i = 0;
-		for (Allocation allocation: federation.getAllocations()) {
-//			System.out.println("分配结果的数量："+federation.getAllocations().size());
-			if (allocation.isCompleted())
-			{
+		double budget = 0;
+		double makespan = 0;
+		double cost = 0;
+		for(Allocation allocation:federation.getAllocations()) {
+			if(allocation.isCompleted()) {
 				i++;
-	//			System.out.println("分配成功：第"+i+"个分配方案");
-				double budget = 0;
-				for (ApplicationVertex av : allocation.getApplication().vertexSet())
+				System.out.println("分配成功：第"+i+"个分配方案");
+				for(ApplicationVertex av:allocation.getApplication().vertexSet()) {
 					budget += av.getBudget();
-				
-				long realduration = allocation.getRealDuration();
-				
-//				double makespan = WorkflowMakespan.getWorkflowMakespan((WorkflowGenerator)applications.get(0), datacenters, internetEstimator);
-				double makespan = WorkflowMakespan.getWorkflowTime(datacenters,internetEstimator,allocation);
-				double cost = WorkflowCost.getWorkflowCost(datacenters, allocation, internetEstimator);
-				TestResult.getCompletion().addValue(makespan);
-				TestResult.getCost().addValue(cost);
-				TestResult.getRealDuration().addValue(realduration);
-				
-				
-				System.out.println("budget：-------------------> " + Double.valueOf(String.format("%.2f", budget)));
-				System.out.println("cost：-------------------> " + Double.valueOf(String.format("%.2f", cost)));
-				System.out.println("makespan：----------------> " + Double.valueOf(String.format("%.2f", makespan)));
-				System.out.println("realduration:----------------> " + realduration);
-			}else
+				}
+				makespan += WorkflowMakespan.getWorkflowTime(datacenters,internetEstimator,allocation);
+				cost += WorkflowCost.getWorkflowCost(datacenters, allocation, internetEstimator);
+			}else {
 				System.out.println("Not completed");
-		}	
+			}
+		}
+		System.out.println("Budget：-------------------> " + Double.valueOf(String.format("%.2f", budget)));
+		System.out.println("Cost：-------------------> " + Double.valueOf(String.format("%.2f", cost)));
+		System.out.println("Makespan：----------------> " + Double.valueOf(String.format("%.2f", makespan)));
+		
+		TestResult.getCompletion().addValue(makespan);
+		TestResult.getCost().addValue(cost);
+		
+		
+//		int i = 0;
+//		for (Allocation allocation: federation.getAllocations()) {
+//			System.out.println("分配结果的数量："+federation.getAllocations().size());
+//			if (allocation.isCompleted())
+//			{
+//				i++;
+//	//			System.out.println("分配成功：第"+i+"个分配方案");
+//				double budget = 0;
+//				for (ApplicationVertex av : allocation.getApplication().vertexSet())
+//					budget += av.getBudget();
+//				
+//				long realduration = allocation.getRealDuration();
+//				
+////				double makespan = WorkflowMakespan.getWorkflowMakespan((WorkflowGenerator)applications.get(0), datacenters, internetEstimator);
+//				double makespan = WorkflowMakespan.getWorkflowTime(datacenters,internetEstimator,allocation);
+//				double cost = WorkflowCost.getWorkflowCost(datacenters, allocation, internetEstimator);
+//				TestResult.getCompletion().addValue(makespan);
+//				TestResult.getCost().addValue(cost);
+//				TestResult.getRealDuration().addValue(realduration);
+//				
+//				
+//				System.out.println("budget：-------------------> " + Double.valueOf(String.format("%.2f", budget)));
+//				System.out.println("cost：-------------------> " + Double.valueOf(String.format("%.2f", cost)));
+//				System.out.println("makespan：----------------> " + Double.valueOf(String.format("%.2f", makespan)));
+//				System.out.println("realduration:----------------> " + realduration);
+//			}else
+//				System.out.println("Not completed");
+//		}	
 	}
 }

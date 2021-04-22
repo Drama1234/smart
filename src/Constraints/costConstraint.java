@@ -39,6 +39,7 @@ public class costConstraint extends Policy{
 			System.out.println("Eval before applying weights for " + "NodeID " + node.getID() + " - ProvID " + prov.getID());
 		double distance = calculateDistance_ErrHandling(cost, budget, maxCost);
 		((CIntegerGene) chromos.getGene(gene_index)).setAllocationCost(cost);
+		if (DEBUG)
 		System.out.println("基因成本约束："+distance*getWeight());
 		return distance * getWeight();
 	}

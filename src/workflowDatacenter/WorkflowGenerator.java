@@ -7,6 +7,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import org.cloudbus.cloudsim.Cloudlet;
 import org.cloudbus.cloudsim.File;
@@ -146,15 +147,16 @@ public class WorkflowGenerator extends Application{
 //			System.out.println(task.getCloudletLength());
 			List<Cloudlet> cloudlets = new ArrayList<>();
 			cloudlets.add(task);
-			
+			Random r = new Random();
 			Vm vm = null;
-			
+			int i = 3 + (int)(Math.random() * 19);
 			if(task.getType().equalsIgnoreCase("SpiltData")||task.getType().equalsIgnoreCase("MergeData")) {
 				vm = createSmallVm(userId);
-				ApplicationVertex v = new ApplicationVertex(userId, cloudlets, vm, datacenterlist.get(0));
+				ApplicationVertex v = new ApplicationVertex(userId, cloudlets, vm, datacenterlist.get(3));
 				v.setBudget(1);
 				v.setTask_time(1);
 				addVertex(v);
+				v.getfeFederationDatacenters().get(0).getId();
 			}else if(task.getCloudletLength() < 2100) {
 				vm = createMediumVm(userId);
 				ApplicationVertex v = new ApplicationVertex(userId, cloudlets, vm);
@@ -222,7 +224,7 @@ public class WorkflowGenerator extends Application{
 		}
 //		System.out.println(super.toString());
 //		System.out.println(super.vertexSet().size() + "+" + super.getEdges().size());
-		System.out.println(super.toString());
+//		System.out.println(super.toString());
 	}
 		
 		

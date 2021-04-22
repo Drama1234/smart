@@ -59,6 +59,12 @@ public class Federation extends SimEntity{
 		construct();
 	}
 	
+	public Federation(long seed) {
+		super("Federation");
+		this.seed = seed;
+		construct();
+	}
+	
 	public HashMap<Integer, Integer> getVmToDatacenter(){
 		return vmToDatacenter;
 	}
@@ -260,7 +266,7 @@ public class Federation extends SimEntity{
 		Cloudlet cloudlet = (Cloudlet) ev.getData();
 //		System.out.println("获得的任务ID:"+cloudlet.getCloudletId());
 		receivedCloudlet.add(cloudlet);	
-		FederationLog.timeLog("Cloudlet" + cloudlet.getCloudletId() +" received");
+//		FederationLog.timeLog("Cloudlet" + cloudlet.getCloudletId() +" received");
 //		System.out.println("接收到的任务数量"+receivedCloudlet.size()+"");
 		// if all the cloudlet are finished, shutdown the monitoring
 		if (receivedCloudlet.size() >= vmToDatacenter.size() && this.emptyQueue) {

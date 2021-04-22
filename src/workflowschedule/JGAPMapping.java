@@ -41,14 +41,17 @@ public class JGAPMapping {
 		IMSApplication application = state.getApplication();
 		Solution sol[] = new Solution[SOLUTION_NUMBER];
 		try {
+			int providerId = (int)application.getNodes().get(0).getCharacteristic().get(Constant.providerID);
 			Configuration conf = new InternalDefaultConfiguration();
 			// making gene
 			int providerNumber = providerList.size();
 			List<MSApplicationNode> nodes = state.getApplication().getNodes();
 			
 			Gene[] genes = new Gene[nodes.size()];
-			genes[0] = new CIntegerGene(conf,3,3);
-			genes[nodes.size()-1] = new CIntegerGene(conf, 3, 3);
+			if(providerId != -1) {
+				genes[0] = new CIntegerGene(conf,providerId,providerId);
+				genes[nodes.size()-1] = new CIntegerGene(conf, providerId, providerId);
+			}
 //			System.out.println("基因的长度"+nodes.size());
 //			genes[0] = new CIntegerGene(conf,0,0);
 //			genes[nodes.size() - 1] = new CIntegerGene(conf,0,0);

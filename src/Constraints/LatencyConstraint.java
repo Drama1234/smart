@@ -64,6 +64,7 @@ public class LatencyConstraint extends Policy{
 		}else {
 			distance = sumofdifference / numofdifference;
 		}
+		if (DEBUG)
 		System.out.println("跨云延迟约束："+distance * getWeight());
 		return distance * getWeight();
 		
