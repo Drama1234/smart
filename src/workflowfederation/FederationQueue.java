@@ -44,6 +44,7 @@ public class FederationQueue extends SimEntity{
 		{
 			CloudSim.send(this.getId(), this.getId(), longs[i], FederationTags.APPLICATION_IN_QUEUE, applications[i]);
 		}
+		
 	}
 
 

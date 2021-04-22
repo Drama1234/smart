@@ -10,6 +10,7 @@ import org.cloudbus.cloudsim.Cloudlet;
 import org.cloudbus.cloudsim.Log;
 import org.cloudbus.cloudsim.core.CloudSim;
 
+import ThreadTest.FederationDatacenters;
 import application.Application;
 import application.ApplicationVertex;
 import federation.resources.FederationDatacenter;
@@ -32,6 +33,7 @@ public class Experiment {
 	protected AbstractAllocator allocator;
 	protected InterfaceDataSet dataset;
 	protected long randomSeed;
+	protected FederationDatacenters FedrationGenerator;
 	
 	public Experiment(AbstractAllocator allocator, InterfaceDataSet d)
 	{
@@ -39,11 +41,12 @@ public class Experiment {
 		this.dataset = d;
 	}
 	
-	public Experiment(AbstractAllocator allocator, InterfaceDataSet d, long seed)
+	public Experiment(AbstractAllocator allocator,  InterfaceDataSet d,  long seed)
 	{
 		this.allocator = allocator;
 		this.dataset = d;
 		this.randomSeed = seed;
+//		this.FedrationGenerator = FedrationGenerator;
 	}
 	
 	public synchronized void run() 
@@ -65,6 +68,8 @@ public class Experiment {
 		
 		// 创建数据中心
 		List<FederationDatacenter> datacenters = dataset.createDatacenters();
+//		List<FederationDatacenter> datacenters = FedrationGenerator.createFederationDatacenters();
+		System.out.println("数据中心数量："+datacenters.size());
 		federation.setDatacenters(datacenters);
 		
 		allocator.setRandomSeed(randomSeed);

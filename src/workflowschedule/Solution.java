@@ -114,8 +114,8 @@ public class Solution {
 			s += associationMap.get(key) + "|";
 		}
 		s+= " \n" + fitnessToString() + "\n";
-		s+= "cost: " + this.getCostAmount() + "\n";
-		s+= "makespan: " + this.getMakespan() + "\n";
+//		s+= "cost: " + this.getCostAmount() + "\n";
+//		s+= "makespan: " + this.getMakespan() + "\n";
 		return s;
 	}
 	

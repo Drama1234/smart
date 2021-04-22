@@ -29,6 +29,19 @@ import workflowfederation.WorkflowCost;
 
 
 public class FederationDatacenter extends Datacenter implements Comparable<FederationDatacenter>{
+	
+	public static int count=0;
+	
+	public void countmethod()
+
+	{
+//	sysout....("进来就加一");
+
+		count++;
+		System.out.println("统计成功次数："+count);
+
+	}
+
 
 	public FederationDatacenter(String name, DatacenterCharacteristics characteristics, 
 			VmAllocationPolicy vmAllocationPolicy,List<Storage> storageList, double schedulingInterval) 
@@ -91,6 +104,7 @@ public class FederationDatacenter extends Datacenter implements Comparable<Feder
 	public String toStringDetail() {
 		StringBuilder sb = new StringBuilder();
 		DatacenterCharacteristicsMS chars = this.getMSCharacteristics();
+		sb.append("datacenter_id:").append(chars.getId()).append(",");
 		sb.append("name:").append(chars.getResourceName()).append(",");
 		sb.append("bw:").append(chars.getDatacenterBw()/1024/1024).append("MB/s,");
 		sb.append("host_num:").append(this.getHostList().size()).append(",");
@@ -351,6 +365,7 @@ public class FederationDatacenter extends Datacenter implements Comparable<Feder
 	 * @pre ev != null
 	 * @post $none
 	 */
+	
 	protected void processVmCreate(SimEvent ev, boolean ack) {
 		
 		Vm generic_vm = (Vm) ev.getData();
@@ -359,6 +374,9 @@ public class FederationDatacenter extends Datacenter implements Comparable<Feder
 
 		boolean result = getVmAllocationPolicy().allocateHostForVm(vm);
 //		System.out.println("分配成功与否："+result);
+//		if(result==true)
+//			countmethod();
+//		System.out.println("分配成功次数："i++);
 
 		if (ack) {
 			int[] data = new int[3];
@@ -376,6 +394,8 @@ public class FederationDatacenter extends Datacenter implements Comparable<Feder
 		if (result) {
 			double amount = 0.0;
 			double myamount = 0.0;
+//			System.out.println("userId:"+vm.getUserId());
+//			System.out.println("债务信息："+getDebts().toString());
 			if (getDebts().containsKey(vm.getUserId())) {
 				amount = getDebts().get(vm.getUserId());
 			}

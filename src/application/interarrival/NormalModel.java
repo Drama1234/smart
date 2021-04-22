@@ -22,7 +22,7 @@ public class NormalModel implements InterArrivalModelItf{
 		for(int i=0;i<applications.length;i++){
 			
 			timestamps[i] = currentTimestamp;
-			currentTimestamp += interval;
+//			currentTimestamp += interval;
 			
 		}
 		

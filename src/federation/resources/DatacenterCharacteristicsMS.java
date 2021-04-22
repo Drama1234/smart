@@ -12,6 +12,7 @@ import org.cloudbus.cloudsim.Host;
 
 public class DatacenterCharacteristicsMS extends DatacenterCharacteristics{
 	private long DatacenterBw = 0;
+	private int id = 0;
 	private double[] costVmTypes = null;
 	public DatacenterCharacteristicsMS(String architecture, String os, 
 			String vmm, List<? extends Host> hostList,double timeZone, 
@@ -118,6 +119,18 @@ public class DatacenterCharacteristicsMS extends DatacenterCharacteristics{
 		this.DatacenterBw = bw;
 	}
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setCostVmTypes(double[] costVmTypes) {
+		this.costVmTypes = costVmTypes;
+	}
+
 	public long getHighestAllocatedBwAmongHosts() {
 		List<Host> list = super.getHostList();
 		Host max = Collections.max(list,new Comparator<Host>() {

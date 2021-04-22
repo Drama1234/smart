@@ -222,7 +222,7 @@ public class WorkflowGenerator extends Application{
 		}
 //		System.out.println(super.toString());
 //		System.out.println(super.vertexSet().size() + "+" + super.getEdges().size());
-//		System.out.println(super.toString());
+		System.out.println(super.toString());
 	}
 		
 		
@@ -246,21 +246,21 @@ public class WorkflowGenerator extends Application{
 //		}
 		
 		
-	public static void main(String[] args){
-		int num_user = 1;   // number of grid users
-        Calendar calendar = Calendar.getInstance();
-        boolean trace_flag = false;  // mean trace events
-
-        // Initialize the CloudSim library
-        CloudSim.init(num_user, calendar, trace_flag);
-        try {
-        	WorkflowDataset dataset = new WorkflowDataset(100, filename);
-        	List<FederationDatacenter> datacenters = dataset.createDatacenters();
-        	WorkflowGenerator app = new WorkflowGenerator("RemoteSense_103", 0, datacenters);
-//			app.export("plots/" + "RemoteSense_1" + ".dot");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+//	public static void main(String[] args){
+//		int num_user = 1;   // number of grid users
+//        Calendar calendar = Calendar.getInstance();
+//        boolean trace_flag = false;  // mean trace events
+//
+//        // Initialize the CloudSim library
+//        CloudSim.init(num_user, calendar, trace_flag);
+//        try {
+//        	WorkflowDataset dataset = new WorkflowDataset(100, filename);
+//        	List<FederationDatacenter> datacenters = dataset.createDatacenters();
+//        	WorkflowGenerator app = new WorkflowGenerator("RemoteSense_13_1", 0, datacenters);
+////			app.export("plots/" + "RemoteSense_1" + ".dot");
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 }

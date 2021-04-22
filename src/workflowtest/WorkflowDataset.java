@@ -13,19 +13,28 @@ import workflownetworking.InternetEstimator;
 public class WorkflowDataset implements InterfaceDataSet{
 	protected long seed = 77;
 	
-	private String filename;
+	private String[] filenames;
 	private int numOfDatacenters;
 	
-	public WorkflowDataset(int numOfDatacenters, String filename)
-	{
-		this.filename = filename;
+//	public WorkflowDataset(String filename)
+//	{
+//		this.filename = filename;
+////		this.numOfDatacenters = numOfDatacenters;
+//	}
+	
+	public WorkflowDataset(int numOfDatacenters,String[] filenames) {
 		this.numOfDatacenters = numOfDatacenters;
+		this.filenames = filenames;
 	}
 	
 	public void setSeed(long seed)
 	{
 		this.seed = seed;
 	}
+	
+//	 public void setFilename(String[] filenames) {
+//		this.filenames = filenames;
+//	}
 	
 	@Override
 	public List<FederationDatacenter> createDatacenters(){
@@ -38,7 +47,9 @@ public class WorkflowDataset implements InterfaceDataSet{
 	@Override
 	public List<Application> createApplications(int userId,List<FederationDatacenter> datacenters) {
 		List<Application> apps = new ArrayList<Application>();
-		apps.add(new WorkflowGenerator(filename, userId, datacenters));
+		for (String filename : filenames) {
+			apps.add(new WorkflowGenerator(filename, userId, datacenters));
+		}
 		return apps;
 	}
 	
@@ -49,10 +60,10 @@ public class WorkflowDataset implements InterfaceDataSet{
 		return inetEst;
 	}
 
-	@Override
-	public List<List<Application>> createMultiworkflow(int userId, List<FederationDatacenter> datacenters) {
-		List<List<Application>> multiworkflow = new ArrayList<List<Application>>();
-		multiworkflow.get(0).add(new WorkflowGenerator(filename, userId, datacenters));
-		return null;
-	}
+//	@Override
+//	public List<List<Application>> createMultiworkflow(int userId, List<FederationDatacenter> datacenters) {
+//		List<List<Application>> multiworkflow = new ArrayList<List<Application>>();
+//		multiworkflow.get(0).add(new WorkflowGenerator(filename, userId, datacenters));
+//		return null;
+//	}
 }

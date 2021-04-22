@@ -187,22 +187,22 @@ public class InternetEstimator {
 		}
 	}
 	
-	public static void main(String[] args) {
-		int num_user = 1;   // number of grid users
-        Calendar calendar = Calendar.getInstance();
-        boolean trace_flag = false;  // mean trace events
-
-        // Initialize the CloudSim library
-        CloudSim.init(num_user, calendar, trace_flag);
-		try {
-			String filename = "resources/RemoteSense_13.xml";
-        	WorkflowDataset dataset = new WorkflowDataset(20, filename);
-        	List<FederationDatacenter> datacenters = dataset.createDatacenters();
-	    	InternetEstimator internetEstimator = new InternetEstimator(datacenters,11);
-	    	internetEstimator.networkRepresation(datacenters);
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-	}
+//	public static void main(String[] args) {
+//		int num_user = 1;   // number of grid users
+//        Calendar calendar = Calendar.getInstance();
+//        boolean trace_flag = false;  // mean trace events
+//
+//        // Initialize the CloudSim library
+//        CloudSim.init(num_user, calendar, trace_flag);
+//		try {
+//			String filename = "resources/RemoteSense_13.xml";
+//        	WorkflowDataset dataset = new WorkflowDataset(20, filename);
+//        	List<FederationDatacenter> datacenters = dataset.createDatacenters();
+//	    	InternetEstimator internetEstimator = new InternetEstimator(datacenters,11);
+//	    	internetEstimator.networkRepresation(datacenters);
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//			e.printStackTrace();
+//		}
+//	}
 }

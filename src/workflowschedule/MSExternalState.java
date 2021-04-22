@@ -32,6 +32,8 @@ public class MSExternalState {
 			this._providers.add(newp);
 		}
 		
+//		System.out.println("原云服务供应商长度："+providers.size());
+//		System.out.println("新云服务供应商长度："+_providers.size());
 //		// ascending sort by datacenter id
 //		Collections.sort(this._providers, new Comparator<IMSProvider>() {
 //			@Override

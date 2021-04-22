@@ -13,6 +13,6 @@ public interface InterfaceDataSet {
 
 	public InternetEstimator createInternetEstimator(List<FederationDatacenter> datacenters);
 	
-	public List<List<Application>> createMultiworkflow(int userId,List<FederationDatacenter> datacenters);
+//	public List<List<Application>> createMultiworkflow(int userId,List<FederationDatacenter> datacenters);
 
 }
