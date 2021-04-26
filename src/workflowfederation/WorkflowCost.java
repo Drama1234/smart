@@ -40,7 +40,7 @@ public class WorkflowCost {
 			vm_time = task_time + edge_time;
 			vm_time = Double.valueOf(String.format("%.2f",vm_time));
 			if(datacenter != null) {
-				cost = (singleVmCost(vm, datacenter)/60) * vm_time;
+				cost = (singleVmCost(vm, datacenter)/3600) * vm_time;
 				cost = Double.valueOf(String.format("%.2f",cost));
 //				System.out.println("vm cost:"+Double.valueOf(String.format("%.2f",singleVmCost(vm, datacenter)))+" vm_time:"+vm_time);
 //				System.out.println("Vm " +vm.getId() +" rent cost of task" + av.getId() + " is " + cost);
@@ -70,20 +70,21 @@ public class WorkflowCost {
 					
 					FederationDatacenter dc_source = Federation.findDatacenter(dcs, source_task.getResourceId());
 					FederationDatacenter dc_target = Federation.findDatacenter(dcs, target_task.getResourceId());
-					
+//					System.out.println("目标供应商ID"+dc_source.getId()+"------------>"+"源供应商ID"+dc_target);
 					if (dc_source.getId() != dc_target.getId()) {
 						InternetLink link = null;
 						try { link = internet.getInternetLink(dc_source, dc_target);} 
 						catch (Exception e) {e.printStackTrace();}
 						double interBwCost = link.getBwcost();
 						cost += computeLinkCost(ae, vm.getId(), dc_source.getId(), dc_target.getId(), interBwCost);
+//						System.out.println("边的成本："+cost);
 					}else {
-						cost+=0;
+						cost += 0;
 					}
 				}
 			}
 		}
-//		System.out.println("网络成本为："+Double.valueOf(String.format("%.2f", cost)));
+		System.out.println("网络成本为："+Double.valueOf(String.format("%.2f", cost)));
 		return cost;
 	}
 	
@@ -135,10 +136,12 @@ public class WorkflowCost {
 		double cost = 0;
 		if (e.getSourceVmId() == sVmId){
 			if (sProvId != tProvId){
-				//System.out.println("Data: "+e.getMBperHour()+ "Price: "+price);
+	//			System.out.println("Data: "+e.getMBperHour()+ "Price: "+price);
 				//传输过来是KB，转换为GB
 				cost += e.getMessageLength()/(1024*1024) * price;
-//				System.out.println("边的文件大小*："+e.getMessageLength());
+//				System.out.println("边的文件大小*："+e.getMessageLength()/1024);
+//				System.out.println("边的价格：GB"+price);
+//				System.out.println("边的成本："+cost);
 				//cost += e.getMBperHour() / 1024 * price;
 			}
 		}

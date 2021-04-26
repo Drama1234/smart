@@ -3,6 +3,8 @@ package workflowtest;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.jgap.impl.SeededRandomGenerator;
+
 import application.Application;
 import federation.resources.FederationDatacenter;
 import workflowDatacenter.DatacenterGenerator;
@@ -11,8 +13,8 @@ import workflownetworking.InternetEstimator;
 
 
 public class WorkflowDataset implements InterfaceDataSet{
-	protected long seed = 77;
-	
+//	protected long seed = 77;
+	private long seed;
 	private String[] filenames;
 	private int numOfDatacenters;
 	
@@ -22,9 +24,10 @@ public class WorkflowDataset implements InterfaceDataSet{
 ////		this.numOfDatacenters = numOfDatacenters;
 //	}
 	
-	public WorkflowDataset(int numOfDatacenters,String[] filenames) {
+	public WorkflowDataset(int numOfDatacenters,String[] filenames,long seed) {
 		this.numOfDatacenters = numOfDatacenters;
 		this.filenames = filenames;
+		this.seed = seed;
 	}
 	
 	public void setSeed(long seed)
@@ -38,8 +41,8 @@ public class WorkflowDataset implements InterfaceDataSet{
 	
 	@Override
 	public List<FederationDatacenter> createDatacenters(){
-		DatacenterGenerator dg = new DatacenterGenerator(this.seed*15);
-		int numHost = 50  * numOfDatacenters; // it will assign more or less 1000 host to each datacenter
+		DatacenterGenerator dg = new DatacenterGenerator(this.seed);
+		int numHost = 50 * numOfDatacenters; // it will assign more or less 1000 host to each datacenter
 		List<FederationDatacenter> dcs = dg.getDatacenters(numOfDatacenters, numHost);
 		return dcs;
 	}

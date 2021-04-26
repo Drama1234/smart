@@ -109,7 +109,7 @@ public class Experiment {
 		for(Allocation allocation:federation.getAllocations()) {
 			if(allocation.isCompleted()) {
 				i++;
-				System.out.println("分配成功：第"+i+"个分配方案");
+//				System.out.println("分配成功：第"+i+"个分配方案");
 				for(ApplicationVertex av:allocation.getApplication().vertexSet()) {
 					budget += av.getBudget();
 				}
